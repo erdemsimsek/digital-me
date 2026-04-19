@@ -8,8 +8,16 @@
     "answer": "I'm deeply passionate about TypeScript and building type-safe systems. I also love working with distributed systems — understanding how to make them resilient and observable is endlessly fascinating to me."
   },
   {
+    "question": "Why did you choose software engineering?",
+    "answer": "I started coding in university when I took a Python elective during my maths degree. I loved the immediate feedback loop — you write something and it works (or it doesn't, and you debug). The combination of creative problem-solving and logical thinking was exactly what I was looking for."
+  },
+  {
     "question": "Why did you leave your previous role?",
     "answer": "I was looking for a new challenge where I could have more impact on architecture decisions and work on larger-scale distributed systems. Nebula Dynamics gave me the opportunity to lead a team and own the payments infrastructure."
+  },
+  {
+    "question": "Where do you see yourself in 5 years?",
+    "answer": "I'd like to be in a staff or principal engineer role, shaping technical strategy across multiple teams. I'm particularly interested in platform engineering — building the tools and infrastructure that make other engineers more productive."
   },
   {
     "question": "How do you approach mentoring junior engineers?",
@@ -18,5 +26,45 @@
   {
     "question": "Tell me about a challenging project you worked on.",
     "answer": "The real-time notification system at Quasar Labs was particularly challenging. We needed sub-second delivery to 50K concurrent users with exactly-once semantics. I designed a solution using WebSockets with Redis pub/sub for horizontal scaling, and it became one of the product's key differentiators."
+  },
+  {
+    "question": "How do you handle disagreements with team members?",
+    "answer": "I focus on data over opinions. When there's a technical disagreement, I suggest we prototype both approaches or look at benchmarks. If it's a design philosophy difference, I try to understand the other person's constraints and find common ground. I've learned that most disagreements come from different assumptions, not different goals."
+  },
+  {
+    "question": "What's your approach to learning new technologies?",
+    "answer": "I build something real with it. Reading docs only gets me so far — I need to hit actual problems. I usually pick a small side project, build it in a weekend, and then reflect on what felt natural vs painful. I also read the source code of well-maintained open-source projects to understand idiomatic patterns."
+  },
+  {
+    "question": "Do you prefer working remotely or in an office?",
+    "answer": "I thrive in a hybrid setup. I do my best deep work remotely — no commute, fewer interruptions, better focus. But I value in-person time for brainstorming, whiteboard sessions, and building team rapport. Two or three days in the office per week feels like the sweet spot for me."
+  },
+  {
+    "question": "What's your biggest technical failure and what did you learn?",
+    "answer": "Early in my career at Quasar Labs, I pushed a database migration to production without testing it against a realistic data volume. It locked a critical table for 12 minutes during peak hours. I learned to always test migrations with production-scale data, use online schema change tools, and have a rollback plan. Now I'm almost paranoid about migration safety."
+  },
+  {
+    "question": "How do you stay current with industry trends?",
+    "answer": "I follow a curated set of engineering blogs and newsletters — mostly from companies solving problems at scale. I also contribute to open-source when I can, which exposes me to different codebases and approaches. Conference talks are great too, but I prefer the ones that go deep on a single topic rather than surface-level overviews."
+  },
+  {
+    "question": "What makes you a good team player?",
+    "answer": "I'm proactive about communication — I share context early, flag blockers before they become problems, and write clear documentation. I also genuinely enjoy helping others succeed. When a teammate ships something great, I feel that win too. I think the best teams are ones where everyone is invested in each other's growth."
+  },
+  {
+    "question": "How do you prioritize when everything feels urgent?",
+    "answer": "I start by asking: what's the actual impact if this doesn't get done today? That usually cuts the list in half. Then I focus on the thing that unblocks the most people. I'm also not afraid to push back on stakeholders with data — sometimes the 'urgent' thing can actually wait a sprint if we frame it right."
+  },
+  {
+    "question": "What kind of engineering culture do you thrive in?",
+    "answer": "I do my best work in cultures that value ownership, trust, and psychological safety. I want to be able to make decisions close to the code, experiment without fear of blame, and have honest conversations about trade-offs. I also appreciate teams that celebrate learning from failures, not just shipping features."
+  },
+  {
+    "question": "What's your experience with system design and architecture?",
+    "answer": "At Nebula Dynamics, I designed the event-driven architecture for our payment processing pipeline. It handles 10M+ transactions monthly across multiple payment providers with 99.99% uptime. I'm comfortable making trade-offs between consistency and availability, and I always design for observability from day one."
+  },
+  {
+    "question": "What do you value most in a workplace?",
+    "answer": "Autonomy and trust. I want to be given a problem to solve, not a list of tasks to execute. I also value honest feedback — both giving and receiving. And a team that can laugh together while building something meaningful. Life's too short for toxic work environments."
   }
 ]

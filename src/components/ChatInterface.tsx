@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
 import type { Message } from "@/lib/types";
@@ -26,31 +27,28 @@ export default function ChatInterface({ welcomeMessage }: ChatInterfaceProps) {
     scrollToBottom();
   }, [messages, typingText, scrollToBottom]);
 
-  const animateResponse = useCallback(
-    (text: string) => {
-      setIsTyping(true);
-      const words = text.split(" ");
-      let current = "";
-      let i = 0;
+  const animateResponse = useCallback((text: string) => {
+    setIsTyping(true);
+    const words = text.split(" ");
+    let current = "";
+    let i = 0;
 
-      const interval = setInterval(() => {
-        if (i < words.length) {
-          current += (i > 0 ? " " : "") + words[i];
-          setTypingText(current);
-          i++;
-        } else {
-          clearInterval(interval);
-          setTypingText("");
-          setIsTyping(false);
-          setMessages((prev) => [...prev, { role: "assistant", content: text }]);
-          inputRef.current?.focus();
-        }
-      }, 35);
+    const interval = setInterval(() => {
+      if (i < words.length) {
+        current += (i > 0 ? " " : "") + words[i];
+        setTypingText(current);
+        i++;
+      } else {
+        clearInterval(interval);
+        setTypingText("");
+        setIsTyping(false);
+        setMessages((prev) => [...prev, { role: "assistant", content: text }]);
+        inputRef.current?.focus();
+      }
+    }, 35);
 
-      return () => clearInterval(interval);
-    },
-    []
-  );
+    return () => clearInterval(interval);
+  }, []);
 
   const sendMessage = async () => {
     const trimmed = input.trim();
@@ -124,56 +122,67 @@ export default function ChatInterface({ welcomeMessage }: ChatInterfaceProps) {
       <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[400px] max-h-[600px]">
         {messages.length === 0 && !isTyping && (
           <div className="flex items-center justify-center h-full">
-            <p className="text-muted-foreground text-center px-4">
-              {welcomeMessage}
-            </p>
+            <p className="text-gray-500 text-center px-4">{welcomeMessage}</p>
           </div>
         )}
 
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            className={`flex ${
-              msg.role === "user" ? "justify-end" : "justify-start"
-            }`}
-          >
-            <div
-              className={`max-w-[80%] rounded-lg px-4 py-2 ${
-                msg.role === "user"
-                  ? "bg-blue-600/90 text-white"
-                  : "bg-white/5 border border-white/10 text-gray-200"
+        <AnimatePresence>
+          {messages.map((msg, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className={`flex ${
+                msg.role === "user" ? "justify-end" : "justify-start"
               }`}
             >
-              {msg.content}
-            </div>
-          </div>
-        ))}
+              <div
+                className={`max-w-[80%] rounded-2xl px-4 py-2.5 ${
+                  msg.role === "user"
+                    ? "bg-indigo-600/80 text-white"
+                    : "bg-white/[0.04] border border-indigo-500/10 text-gray-200 shadow-[0_0_15px_-3px_rgba(99,102,241,0.08)]"
+                }`}
+              >
+                {msg.content}
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
 
         {isTyping && typingText && (
-          <div className="flex justify-start">
-            <div className="max-w-[80%] rounded-lg px-4 py-2 bg-white/5 border border-white/10 text-gray-200">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex justify-start"
+          >
+            <div className="max-w-[80%] rounded-2xl px-4 py-2.5 bg-white/[0.04] border border-indigo-500/10 text-gray-200 shadow-[0_0_15px_-3px_rgba(99,102,241,0.08)]">
               {typingText}
-              <span className="inline-block w-1.5 h-4 bg-blue-400 ml-0.5 animate-pulse" />
+              <span className="inline-block w-1.5 h-4 bg-indigo-400 ml-0.5 animate-pulse rounded-sm" />
             </div>
-          </div>
+          </motion.div>
         )}
 
         {loading && (
-          <div className="flex justify-start">
-            <div className="rounded-lg px-4 py-2 bg-white/5 border border-white/10 text-muted-foreground">
-              <span className="flex gap-1">
-                <span className="animate-bounce">.</span>
-                <span className="animate-bounce [animation-delay:0.1s]">.</span>
-                <span className="animate-bounce [animation-delay:0.2s]">.</span>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex justify-start"
+          >
+            <div className="rounded-2xl px-4 py-3 bg-white/[0.04] border border-indigo-500/10">
+              <span className="flex gap-1.5">
+                <span className="w-2 h-2 bg-indigo-400/60 rounded-full animate-bounce" />
+                <span className="w-2 h-2 bg-indigo-400/60 rounded-full animate-bounce [animation-delay:0.15s]" />
+                <span className="w-2 h-2 bg-indigo-400/60 rounded-full animate-bounce [animation-delay:0.3s]" />
               </span>
             </div>
-          </div>
+          </motion.div>
         )}
 
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="border-t border-white/10 p-3 flex gap-2">
+      <div className="border-t border-white/[0.08] p-3 flex gap-2">
         <input
           ref={inputRef}
           type="text"
@@ -181,14 +190,14 @@ export default function ChatInterface({ welcomeMessage }: ChatInterfaceProps) {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
           placeholder="Ask about skills, experience, projects..."
-          className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500/50"
+          className="flex-1 bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-indigo-500/40 focus:border-indigo-500/30 transition-all"
           disabled={loading || isTyping}
         />
         <Button
           onClick={sendMessage}
           disabled={loading || isTyping || !input.trim()}
           size="icon"
-          className="shrink-0"
+          className="shrink-0 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl"
         >
           <Send size={18} />
         </Button>

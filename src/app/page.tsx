@@ -23,10 +23,10 @@ export default function Home() {
             <EducationCard education={profileData.education} />
           </div>
 
-          <div className="lg:col-span-3 rounded-xl bg-card/50 border border-white/10 shadow-2xl shadow-blue-900/10 flex flex-col">
-            <div className="p-5 border-b border-white/10">
+          <div className="lg:col-span-3 lg:sticky lg:top-8 lg:self-start rounded-2xl bg-white/[0.02] border border-white/[0.08] shadow-[0_0_30px_-5px_rgba(99,102,241,0.06)] flex flex-col">
+            <div className="p-5 border-b border-white/[0.08]">
               <h2 className="text-xl font-semibold text-center flex items-center justify-center gap-3 text-white">
-                <Bot className="text-blue-400" size={22} />
+                <Bot className="text-indigo-400" size={22} />
                 Ask My AI Twin
               </h2>
             </div>
@@ -35,14 +35,14 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="py-8 mt-12 text-center text-xs border-t border-white/10">
-        <p className="text-muted-foreground">
+      <footer className="py-8 mt-12 text-center text-xs border-t border-white/[0.06]">
+        <p className="text-gray-600">
           Powered by{" "}
           <a
             href="https://github.com/erdemsimsek/digital-me"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 transition-colors"
+            className="text-indigo-400/70 hover:text-indigo-400 transition-colors"
           >
             digital-me
           </a>
