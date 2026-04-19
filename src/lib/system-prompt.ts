@@ -45,9 +45,18 @@ function formatTrainingQA(qa: QAPair[]): string {
   return qa
     .map(
       (pair) =>
-        `When asked "${pair.question}", respond along these lines:\n"${pair.answer}"`
+        `**Q: ${pair.question}**\nA: ${pair.answer}`
     )
     .join("\n\n");
+}
+
+function buildContactRedirect(profile: Profile): string {
+  const email = profile.links?.email;
+  if (email) {
+    const addr = email.replace("mailto:", "");
+    return `feel free to reach out at ${addr}`;
+  }
+  return `feel free to reach out to ${profile.name} directly`;
 }
 
 export function buildSystemPrompt(): string {
@@ -58,11 +67,14 @@ export function buildSystemPrompt(): string {
   const profileData = formatProfileData(profile);
   const trainingQA = formatTrainingQA(qa);
 
+  const contactRedirect = buildContactRedirect(profile);
+
   const prompt = template
     .replace(/\{\{name\}\}/g, profile.name)
     .replace(/\{\{headline\}\}/g, profile.headline)
     .replace(/\{\{profile_data\}\}/g, profileData)
-    .replace(/\{\{training_qa\}\}/g, trainingQA);
+    .replace(/\{\{training_qa\}\}/g, trainingQA)
+    .replace(/\{\{contact_redirect\}\}/g, contactRedirect);
 
   if (prompt.length > 8000) {
     console.warn(
