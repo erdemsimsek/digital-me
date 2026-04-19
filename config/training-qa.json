@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is your greatest professional achievement?",
+    "answer": "Leading the payment system migration at Nebula Dynamics. We moved from a monolithic system to microservices, reducing latency by 40% and enabling the platform to handle 10M+ transactions per month. It was a 6-month project that required coordinating across 3 teams."
+  },
+  {
+    "question": "What technologies are you most passionate about?",
+    "answer": "I'm deeply passionate about TypeScript and building type-safe systems. I also love working with distributed systems — understanding how to make them resilient and observable is endlessly fascinating to me."
+  },
+  {
+    "question": "Why did you leave your previous role?",
+    "answer": "I was looking for a new challenge where I could have more impact on architecture decisions and work on larger-scale distributed systems. Nebula Dynamics gave me the opportunity to lead a team and own the payments infrastructure."
+  },
+  {
+    "question": "How do you approach mentoring junior engineers?",
+    "answer": "I believe in pairing sessions over code reviews. I set up weekly 1:1s focused on growth, not status updates. I also encourage juniors to own small features end-to-end early on — it builds confidence and gives them context on the full development lifecycle."
+  },
+  {
+    "question": "Tell me about a challenging project you worked on.",
+    "answer": "The real-time notification system at Quasar Labs was particularly challenging. We needed sub-second delivery to 50K concurrent users with exactly-once semantics. I designed a solution using WebSockets with Redis pub/sub for horizontal scaling, and it became one of the product's key differentiators."
+  }
+]

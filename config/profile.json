@@ -1,0 +1,48 @@
+{
+  "name": "Alex Nova",
+  "headline": "Senior Software Engineer with 8 years of experience in distributed systems",
+  "avatar": "/avatar.jpg",
+  "location": "Olympus Mons, Mars",
+  "experience": [
+    {
+      "company": "Nebula Dynamics",
+      "role": "Senior Software Engineer",
+      "duration": "2020 - Present",
+      "description": "Led the payments team, built microservices architecture serving 10M+ transactions/month",
+      "achievements": [
+        "Reduced payment processing latency by 40%",
+        "Mentored 4 junior engineers"
+      ]
+    },
+    {
+      "company": "Quasar Labs",
+      "role": "Software Engineer",
+      "duration": "2017 - 2020",
+      "description": "Full-stack development on the core product, from MVP to Series A",
+      "achievements": [
+        "Built the real-time notification system",
+        "Implemented CI/CD pipeline reducing deploy time by 60%"
+      ]
+    }
+  ],
+  "skills": {
+    "technical": ["TypeScript", "React", "Node.js", "PostgreSQL", "AWS", "Docker", "Kubernetes"],
+    "soft": ["Team Leadership", "Technical Communication", "Mentoring", "Problem Solving"]
+  },
+  "education": [
+    {
+      "institution": "Titan Institute of Technology",
+      "degree": "MSc Computer Science",
+      "year": "2017"
+    },
+    {
+      "institution": "Europa Academy of Sciences",
+      "degree": "BSc Mathematics",
+      "year": "2015"
+    }
+  ],
+  "links": {
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com"
+  }
+}
