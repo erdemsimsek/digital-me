@@ -4,6 +4,8 @@ Your AI-powered digital twin. Fork it, add your profile, deploy to Vercel — le
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ferdemsimsek%2Fdigital-me&env=OPENROUTER_API_KEY&envDescription=Get%20your%20API%20key%20at%20openrouter.ai%2Fkeys&project-name=my-digital-twin)
 
+![digital-me preview](doc/screenshot.png)
+
 ## What is this?
 
 A personal portfolio page with an AI chatbot that role-plays as you. It uses your profile data, experience, and training Q&A to answer questions about your background — like having a 24/7 version of yourself available for recruiters, colleagues, or anyone curious about your work.
